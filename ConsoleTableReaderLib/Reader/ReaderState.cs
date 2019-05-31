@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
 
 namespace MyConsoleAppAsignment
 {
-	class DataContainer
+	public struct ReaderState
 	{
-		
+		public static ReaderState Default = new ReaderState { Options = ReadOptions.RestrictFileType };
+
+		public ReadOptions Options;	
 	}
 }
