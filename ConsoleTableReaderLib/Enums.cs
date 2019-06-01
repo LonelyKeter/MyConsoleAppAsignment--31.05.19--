@@ -12,7 +12,7 @@ namespace MyConsoleAppAsignment
 		Count = 0x1,
 		Names = 0x2,
 		Sheets = 0x4,
-		Accurate = 0x8,
+		Keys = 0x8,
 		Unrestrict = 0x10,
 	}	
 

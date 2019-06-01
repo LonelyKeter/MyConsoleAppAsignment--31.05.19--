@@ -44,7 +44,7 @@ namespace MyConsoleAppAsignment
 						}
 						while (reader.NextResult());
 						
-						this.Set = (LocalDataSet)reader.AsDataSet(Config);
+						this.Set.Set = reader.AsDataSet(Config);
 					}
 				}
 				return true;
@@ -62,7 +62,7 @@ namespace MyConsoleAppAsignment
 						}
 						while (reader.NextResult());
 
-						this.Set = (LocalDataSet)reader.AsDataSet();
+						this.Set.Set = reader.AsDataSet();
 					}
 				}
 				return true;
@@ -92,7 +92,7 @@ namespace MyConsoleAppAsignment
 						}						
 						while (reader.NextResult());
 
-						this.Set = (LocalDataSet)reader.AsDataSet();
+						this.Set.Set = reader.AsDataSet();
 					}
 
 					return true;
@@ -107,7 +107,7 @@ namespace MyConsoleAppAsignment
 					}
 					while (reader.NextResult());
 
-					this.Set = (LocalDataSet)reader.AsDataSet();
+					this.Set.Set = reader.AsDataSet();
 				}
 
 				return true;

@@ -50,7 +50,7 @@ namespace MyConsoleAppAsignment
 
 			Flags = ActionFlags.None;			
 
-			if ((Options & VerifyOptions.ForbidRepeatingArgs) > 0 && Args[0].Length > 5) return VerifyResult.InvalidArguments;
+			if ((Options & VerifyOptions.ForbidRepeatingArgs) > 0 && Args[0].Length > 6) return VerifyResult.InvalidArguments;
 
 			//Flag collection depending on VerifyOptions arg
 			for (int i = 1; i < Args[0].Length; i++)
@@ -85,17 +85,17 @@ namespace MyConsoleAppAsignment
 						else
 							if (ContainsFlag(Options, VerifyOptions.ForbidRepeatingArgs)) return VerifyResult.InvalidArguments;
 						break;
-					case 'a':
-						if (!ContainsFlag(Flags, ActionFlags.Accurate))
+					case 'k':
+						if (!ContainsFlag(Flags, ActionFlags.Keys))
 						{
-							Flags = Flags | ActionFlags.Accurate;
+							Flags = Flags | ActionFlags.Keys;
 							break;
 						}
 						else
 							if (ContainsFlag(Options, VerifyOptions.ForbidRepeatingArgs)) return VerifyResult.InvalidArguments;
 						break;
 					case 'u':
-						if (!ContainsFlag(Flags, ActionFlags.Accurate))
+						if (!ContainsFlag(Flags, ActionFlags.Unrestrict))
 						{
 							Flags = Flags | ActionFlags.Unrestrict;
 							break;
@@ -109,9 +109,9 @@ namespace MyConsoleAppAsignment
 				}
 			}
 
-			if (Flags == ActionFlags.Accurate ||
+			if (Flags == ActionFlags.Keys ||
 				Flags == ActionFlags.Unrestrict ||
-				Flags == (ActionFlags.Unrestrict | ActionFlags.Accurate))
+				Flags == (ActionFlags.Unrestrict | ActionFlags.Keys))
 				AddDefaultFlags(ref Flags);
 
 			return VerifyResult.Success;

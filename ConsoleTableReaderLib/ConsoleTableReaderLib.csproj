@@ -58,13 +58,24 @@
     <Compile Include="Enums.cs" />
     <Compile Include="ErrorMessages.cs" />
     <Compile Include="ArgumentVerifier\ArgumentVerifier.cs" />
+    <Compile Include="IWrapper.cs" />
     <Compile Include="Reader\IReader.cs" />
     <Compile Include="LocalDataSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reader\EDRReader.cs" />
     <Compile Include="Reader\ReaderState.cs" />
+    <Compile Include="Representer\CountRepresenter.cs" />
+    <Compile Include="Representer\IRepresenter.cs" />
+    <Compile Include="Representer\CellNameRepresenter.cs" />
+    <Compile Include="Representer\KeyRepresenter.cs" />
+    <Compile Include="Representer\LoneSheetRepresenter.cs" />
+    <Compile Include="Representer\PrefixContainer.cs" />
+    <Compile Include="Representer\Representer.cs" />
+    <Compile Include="Representer\RepresenterFactory.cs" />
+    <Compile Include="Representer\SheetRepresenter.cs" />
     <Compile Include="Searcher\Searcher.cs" />
-    <Compile Include="Searcher\SearcherState.cs" />
+    <Compile Include="Representer\RepresenterState.cs" />
+    <Compile Include="Searcher\SearchResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

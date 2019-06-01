@@ -11,9 +11,9 @@ namespace MyConsoleAppAsignment
 	/// </summary>
 	public static class ErrorMessages
 	{
-		public static string FileDoesNotExist = "";
-		public static string WrongParametersPassed = "";
-		public static string WrongParameterFormat = "";
-		public static string NotEnoughArguments = "";
+		public static string FileDoesNotExist = "File does not exist";
+		public static string WrongParametersPassed = "Wrong parameters passed";
+		public static string WrongParameterFormat = "Wrong parameter format";
+		public static string NotEnoughArguments = "Not enough arguments";
 	}
 }

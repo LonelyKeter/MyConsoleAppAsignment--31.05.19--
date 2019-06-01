@@ -12,7 +12,7 @@ namespace MyConsoleAppAsignment
 	/// </summary>
 	public class LocalDataSet
 	{		
-		public DataSet Set { get; protected set; }
+		public DataSet Set { get; set; }
 
 		public static explicit operator LocalDataSet(DataSet set)
 		{

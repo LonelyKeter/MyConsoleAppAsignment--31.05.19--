@@ -12,25 +12,42 @@ namespace Test
 {
 	class Test
 	{
-		static void Main(string[] args)
+		static void Main()
 		{
-			var reader = EDRReader.Factory.GetEDRReader(LocalDataSet.Factory.GetLocalDataSet());
-			Console.WriteLine(reader.Read("Книга.xlsx"));
+			string[] args = { "-sun", "Male", @"C:\Users\LonelyKeter\source\repos\MyConsoleAppAsignment\Test\bin\Debug\file_example_XLS_10.xsx" };
+			ArgumentVerifier verifier = ArgumentVerifier.Factory.GetVerifier();
 
-			var result = (DataSet)reader.Set;
+			VerifyResult vresult = verifier.Verify(args, out ActionFlags Flags);
 
-			Console.WriteLine(result.DataSetName);
-			foreach (DataTable a in result.Tables)
+			switch (vresult)
 			{
-				Console.WriteLine(a.TableName);
-				foreach (DataColumn c in a.Columns) Console.Write($"|{c,10}|");
-				Console.WriteLine();
-				foreach (DataRow r in a.Rows)
-				{
-					foreach (object i in r.ItemArray) Console.Write($"|{i,10}|");
-					Console.WriteLine();
-				}
+				case VerifyResult.Fail :
+					Console.WriteLine(ErrorMessages.WrongParametersPassed);
+					return;
+				case VerifyResult.InvalidArguments:
+					Console.WriteLine(ErrorMessages.WrongParametersPassed);
+					return;
+				case VerifyResult.InvalidFilePath:
+					Console.WriteLine(ErrorMessages.FileDoesNotExist);
+					return;
+				case VerifyResult.NotEnoughArguments:
+					Console.WriteLine(ErrorMessages.NotEnoughArguments);
+					return;
 			}
+
+			LocalDataSet set = LocalDataSet.Factory.GetLocalDataSet();
+
+			ReaderState readerState = new ReaderState { Options = (Flags & ActionFlags.Unrestrict) == 0 ? ReadOptions.RestrictFileType : ReadOptions.None };
+
+			IReader reader = EDRReader.Factory.GetEDRReader(readerState,set);
+
+			reader.Read(args.Last());			
+
+			SearchResult result = Searcher.Search(Searcher.GetKeys(args), set);
+
+			IRepresenter representer = RepresenterFactory.GetRepresenter(Flags);
+
+			Console.WriteLine(representer.Represent(result));
 		}
 	}
 }
