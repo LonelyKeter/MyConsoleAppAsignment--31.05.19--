@@ -124,8 +124,9 @@ namespace MyConsoleAppAsignment
 			UseColumnDataType = false,
 			FilterSheet = (tableReader, sheetIndex) => true,
 			ConfigureDataTable = (tableReader) => new ExcelDataTableConfiguration()
-			{				
-				UseHeaderRow = true,
+			{
+				EmptyColumnNamePrefix = "",
+				UseHeaderRow = false,
 				ReadHeaderRow = (rowReader) =>{	},
 
 				FilterRow = (rowReader) =>

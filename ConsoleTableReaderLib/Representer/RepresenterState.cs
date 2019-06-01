@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
-	public struct SearcherState 
+	public struct RepresenterState 
 	{
 		public ActionFlags Flags;
 
-		public static SearcherState Default = new SearcherState
+		public static RepresenterState Default = new RepresenterState
 		{
 			Flags = ActionFlags.Count | ActionFlags.Names | ActionFlags.Sheets
 		};
