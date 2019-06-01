@@ -30,8 +30,12 @@ namespace MyConsoleAppAsignment
 
 				Base.Prefix.Prefix = searchResult[k].SheetNames[t];
 
-				builder.Append(Base.Represent(searchResult, t));
-			}		
+				builder.Append(Base.Represent(searchResult, t));				
+			}
+
+			IRepresenter allCount = new CountRepresenter(new Representer());
+
+			builder.Append(allCount.Represent(searchResult));
 
 			return builder;
 		}

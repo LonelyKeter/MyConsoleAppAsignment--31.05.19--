@@ -27,6 +27,10 @@ namespace MyConsoleAppAsignment
 				builder.AppendLine();
 			}
 
+			IRepresenter allCount = new CountRepresenter(new Representer());
+
+			builder.Append(allCount.Represent(searchResult));
+
 			return builder;
 		}
 
