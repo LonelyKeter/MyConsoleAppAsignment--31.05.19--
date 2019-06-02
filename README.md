@@ -75,7 +75,8 @@ Output:
     Argument verification:
          Argument verification functions are incapsulated in "ArgumentVerifier" class.          
          Each ArgumentVerifier contains its VerifierState, which is passed to ArgumentVerifier.Factory.GetVerifier.         
-         State discribes how verifier should interpret passed arguments. At the moment VerifierState contains only VerifierOptions enum value.
+         State discribes how verifier should interpret passed arguments. At the moment VerifierState contains only 
+         VerifierOptions enum value.         
          Then, Verify() method should be called. Returned value indicates result of verification.
          
 --------------------------------------------------------------------------------------------------------------------------------------
@@ -91,6 +92,7 @@ Output:
          
          
          
-         EDRReader: Should be used carefully, because in case the reader won't be able to read file as xls/xlsx, it would read it as CSV file (which is basically formatted 
+         EDRReader: Should be used carefully, because in case the reader won't be able to read file as xls/xlsx, it would
+         read it as an CSV file (which is basically formatted .txt, so it can cause unpredictible results).
          
      
