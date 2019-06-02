@@ -34,7 +34,11 @@ namespace ConsolReaderApp
 
 			IReader reader = EDRReader.Factory.GetEDRReader(readerState, set);
 
-			reader.Read(args.Last());
+			if (!reader.Read(args.Last()))
+			{
+				Console.Write(ErrorMessages.CouldnotReadFile);
+				return;
+			}
 
 			SearchResult result = Searcher.Search(Searcher.GetKeys(args), set);
 

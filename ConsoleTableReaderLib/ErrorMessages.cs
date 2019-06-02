@@ -15,5 +15,6 @@ namespace MyConsoleAppAsignment
 		public static string WrongParametersPassed = "Wrong parameters passed";
 		public static string WrongParameterFormat = "Wrong parameter format";
 		public static string NotEnoughArguments = "Not enough arguments";
+		public static string CouldnotReadFile = "Couldn't read file";
 	}
 }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// An interface, implemented by any <see cref="SearchResult"/> representer
+	/// </summary>
 	public interface IRepresenter
 	{
 		PrefixContainer Prefix { get; set; }

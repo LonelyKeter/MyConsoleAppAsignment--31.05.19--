@@ -15,13 +15,13 @@ namespace MyConsoleAppAsignment
 		public ArgumentVerifierState State { get; protected set; }
 
 		/// <summary>
-		/// Verifies passed filepath (last <c>string</c> in <c>Args</c>)
+		/// Verifies passed filepath (last item in <paramref name="Args"/>)
 		/// </summary>
-		/// <param name="Args">sArguments passed to program</param>
+		/// <param name="Args">Arguments passed to program</param>
 		/// <returns>
-		/// <para>If file exists returns <c>VerifyResult.Success</c></para>
-		/// <para>If only one argument was passed returns <c>VerifyResult.NotEnoughArguments</c></para> 
-		/// <para>If file doesn't exist returns <c>VerifyResult.IvalidFilePath</c></para>
+		/// <para>If file exists returns <see cref="VerifyResult"/>.Success</para>
+		/// <para>If only one argument was passed returns  <see cref="VerifyResult"/>NotEnoughArguments</para> 
+		/// <para>If file doesn't exist returns  <see cref="VerifyResult"/>.IvalidFilePath</para>
 		/// </returns>
 		protected VerifyResult VerifyFilePath(string[] Args)
 		{
@@ -30,10 +30,10 @@ namespace MyConsoleAppAsignment
 		}
 
 		/// <summary>
-		/// Varifies passed flags (first <c>string</c> in <c>Args</c>)
+		/// Varifies passed flags (first item in <paramref name="Args"/>)
 		/// </summary>
-		/// <param name="Args"></param>
-		/// <param name="Flags"></param>
+		/// <param name="Args">Arguments passed to program</param>
+		/// <param name="Flags"><see cref="VerifyResult"/></param>
 		/// <returns></returns>
 		protected VerifyResult VerifyFlags(string[] Args, out ActionFlags Flags)
 		{
@@ -121,8 +121,8 @@ namespace MyConsoleAppAsignment
 		/// Verifies passed arguments
 		/// </summary>
 		/// <param name="Args">sArguments passed to program</param>
-		/// <param name="Flags"><c>ActionFlags</c> used for factoring <c>Searcher</c> object</param>
-		/// <returns><c>VerifyResult.Success</c> if passed arguments are valid and <c>VerifyResult.Fail</c> otherwise</returns>
+		/// <param name="Flags"><see cref="ActionFlags"/> used for factoring <see cref="IRepresenter"/> object</param>
+		/// <returns><see cref="VerifyResult"/>.Success if passed arguments are valid and <see cref="VerifyResult"/>.Fail otherwise</returns>
 		public virtual VerifyResult Verify(string[] Args, out ActionFlags Flags)
 		{
 			VerifyResult a = VerifyFilePath(Args);
@@ -150,15 +150,15 @@ namespace MyConsoleAppAsignment
 		}
 
 		/// <summary>
-		///Static <c>ArgumentVerifier</c> Factory class containing factory methods
+		///Static <see cref="ArgumentVerifier"/> Factory class containing factory methods
 		/// </summary>
 		public static class Factory
 		{
 			/// <summary>
-			/// Creates custom instance of <c>ArgumentVerifier</c> coresponding to passed <c>ArgumentVerifierState</c> structure
+			/// Creates custom instance of <see cref="ArgumentVerifier"/> coresponding to passed <see cref="ArgumentVerifierState"/> structure
 			/// </summary>
-			/// <param name="State"><c>ArgumentVerifierState</c> struct containing needed state</param>
-			/// <returns>New instance of an <c>ArgumentVerifier</c></returns>
+			/// <param name="State"><see cref="ArgumentVerifierState"/> struct containing needed state</param>
+			/// <returns>New instance of an <see cref="ArgumentVerifier"/></returns>
 			public static ArgumentVerifier GetVerifier(ArgumentVerifierState State)
 			{
 				ArgumentVerifier result = new ArgumentVerifier();
@@ -167,9 +167,9 @@ namespace MyConsoleAppAsignment
 			}
 
 			/// <summary>
-			/// Creates default instance of <c>ArgumentVerifier</c> coresponding to default <c>ArgumentVerifierState</c>
+			/// Creates default instance of <see cref="ArgumentVerifier"/> coresponding to default <see cref="ArgumentVerifierState"/>
 			/// </summary>
-			/// <returns>New instance of an <c>ArgumentVerifier</c></returns>
+			/// <returns>New instance of a default <see cref="ArgumentVerifier"/></returns>
 			public static ArgumentVerifier GetVerifier()
 			{
 				return GetVerifier(ArgumentVerifierState.Default);

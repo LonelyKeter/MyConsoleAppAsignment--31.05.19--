@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// A struct, used for containg <see cref="Searcher"/> search results
+	/// </summary>
 	public struct SearchResult
 	{
 		public string[] Keys { get; private set; }
@@ -24,6 +27,9 @@ namespace MyConsoleAppAsignment
 			Keys = keys;
 		}
 
+		/// <summary>
+		/// Sub struct that contains search results for concrete <see cref="Keys"/> item
+		/// </summary>
 		public struct Result
 		{
 			public int Count { get; private set; }

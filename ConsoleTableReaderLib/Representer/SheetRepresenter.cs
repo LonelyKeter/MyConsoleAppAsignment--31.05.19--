@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// <para>A wrapper, that defines a name prefix for <see cref="CellNameRepresenter"/>
+	/// <para>Doesn't support <see cref="IRepresenter.Represent(SearchResult, int)"/> and <see cref="IRepresenter.Represent(SearchResult.Result, int)"/></para>
+	/// </summary>
 	internal class SheetRepresenter : Representer, IWrapper<IRepresenter>
 	{
 		public IRepresenter Base { get; set; }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// A wrapper, that adds a count representation to <see cref="Base"/> <see cref="IRepresenter"/> representation
+	/// </summary>
 	internal class CountRepresenter : Representer, IWrapper<IRepresenter>
 	{
 		public IRepresenter Base { get; set; }

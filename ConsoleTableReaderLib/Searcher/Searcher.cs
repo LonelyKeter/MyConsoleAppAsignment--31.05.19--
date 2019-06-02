@@ -7,6 +7,9 @@ using System.Data;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// Static class, that searches string representations through <see cref="LocalDataSet"/>
+	/// </summary>
 	public static class Searcher
 	{
 		public static SearchResult Search(string[] keys, LocalDataSet Set)

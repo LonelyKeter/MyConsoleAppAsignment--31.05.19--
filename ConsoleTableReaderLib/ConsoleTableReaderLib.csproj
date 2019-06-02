@@ -74,7 +74,6 @@
     <Compile Include="Representer\RepresenterFactory.cs" />
     <Compile Include="Representer\SheetRepresenter.cs" />
     <Compile Include="Searcher\Searcher.cs" />
-    <Compile Include="Representer\RepresenterState.cs" />
     <Compile Include="Searcher\SearchResult.cs" />
   </ItemGroup>
   <ItemGroup>

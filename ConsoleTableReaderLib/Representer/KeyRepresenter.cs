@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// <para>Wrapper, that adds a passed keys representation to <see cref="Base"/> <see cref="IRepresenter"/> representation</para>
+	/// <para>Doesn't support <see cref="IRepresenter.Represent(SearchResult.Result)"/>, <see cref="IRepresenter.Represent(SearchResult, int)"/> and <see cref="IRepresenter.Represent(SearchResult.Result, int)"/></para>
+	/// </summary>
 	internal class KeyRepresenter : Representer, IWrapper<IRepresenter>
 	{
 		public IRepresenter Base { get; set;}

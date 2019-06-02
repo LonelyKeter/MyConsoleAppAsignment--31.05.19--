@@ -6,14 +6,23 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// An interface, implemented by any <see cref="IReader"/> object
+	/// </summary>
 	public interface IReader
 	{
+		/// <summary>
+		/// A <see cref="LocalDataSet"/>, where this instance of <see cref="IReader"/> reads a file to
+		/// </summary>
 		LocalDataSet Set { get; }
 
+		/// <summary>
+		/// This <see cref="IReader"/> object's state
+		/// </summary>
 		ReaderState State { get; }
 
 		/// <summary>
-		/// Reads a file from passed <c>filepath</c> into <c>Set</c> property
+		/// Reads a file from passed <paramref name="filepath"/> into <c>Set</c> property
 		/// </summary>
 		/// <param name="filepath"></param>
 		/// <returns>True if file was read, otherwise false</returns>

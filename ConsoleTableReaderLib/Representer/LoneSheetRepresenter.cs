@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// <para>A special wrapper, that adds a sheet representation to <see cref="Base"/> <see cref="IRepresenter"/> representation, that is when {s} flag was passed without {n} flag</para>
+	/// <para>Doesn't support <see cref="IRepresenter.Represent(SearchResult, int)"/> and <see cref="IRepresenter.Represent(SearchResult.Result, int)"/></para>
+	/// </summary>
 	internal class LoneSheetRepresenter : Representer, IWrapper<IRepresenter>
 	{
 		public IRepresenter Base { get; set; }		

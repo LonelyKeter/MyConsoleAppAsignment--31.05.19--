@@ -17,6 +17,11 @@ namespace MyConsoleAppAsignment
 		
 		public ReaderState State { get; protected set; }
 
+		/// <summary>
+		/// Invokes <see cref="RestrictedRead(string)" or <see cref="UnrestrictedRead(string)"/> depending on this <see cref="EDRReader"/> <see cref="EDRReader.State"/>/>
+		/// </summary>
+		/// <param name="filepath">A path to readed file</param>
+		/// <returns>True, if file was successfully read, otherwise False</returns>
 		public bool Read(string filepath)
 		{
 			if (ContainsFlag(State.Options, ReadOptions.RestrictFileType)) return RestrictedRead(filepath);
@@ -26,7 +31,7 @@ namespace MyConsoleAppAsignment
 		/// <summary>
 		/// Reads only those files, that have supported extension (*.txt files are also interpreted as CSV files)
 		/// </summary>
-		/// <param name="filepath"></param>
+		/// <param name="filepath">A path to readed file</param>
 		/// <returns>True, if file was succesgully read, otherwise False</returns>
 		private bool RestrictedRead(string filepath)
 		{
@@ -76,8 +81,8 @@ namespace MyConsoleAppAsignment
 		/// <para>First, as xml\xmls file </para>
 		/// <para>Then, as CSV file (can lead to an unpredictible result)</para>
 		/// </summary>
-		/// <param name="filepath"></param>
-		/// <returns></returns>
+		/// <param name="filepath">A path to readed file</param>
+		/// <returns>Always returns True</returns>
 		private bool UnrestrictedRead(string filepath)
 		{
 			using (var stream = File.Open(filepath, FileMode.Open, FileAccess.Read))
@@ -118,7 +123,10 @@ namespace MyConsoleAppAsignment
 		{
 			return ((obj & prototype) > 0);
 		}
-
+		
+		/// <summary>
+		/// <see cref="ExcelDataReader"/> class used by <see cref="IExcelDataReader.AsDataSet"/>
+		/// </summary>
 		static ExcelDataSetConfiguration Config = new ExcelDataSetConfiguration()
 		{
 			UseColumnDataType = false,
@@ -140,6 +148,9 @@ namespace MyConsoleAppAsignment
 			}
 		};
 
+		/// <summary>
+		/// EDRreader factory
+		/// </summary>
 		public static class Factory
 		{
 			/// <summary>

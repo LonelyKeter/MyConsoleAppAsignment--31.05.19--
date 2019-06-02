@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace MyConsoleAppAsignment
 {
+	/// <summary>
+	/// An <see cref="IRepresenter"/> decorator, that wraps a <see cref="Representer"/> into needed <see cref="IWrapper{IRepresenter}"/>
+	/// </summary>
 	public static class RepresenterFactory
 	{
+		/// <summary>
+		/// Wraps a <see cref="Representer"/> in the correct order into needed <see cref="IWrapper{IRepresenter}"/>, depending on passed <paramref name="Flags"/>
+		/// </summary>
+		/// <param name="Flags"><see cref="ActionFlags"/> value, that defines wrapping process</param>
+		/// <returns>Custom <see cref="IRepresenter"/>, that was created corresponding to passed <paramref name="Flags"/> value</returns>
 		public static IRepresenter GetRepresenter(ActionFlags Flags)
 		{
 			Flags = Flags & ~ActionFlags.Unrestrict;

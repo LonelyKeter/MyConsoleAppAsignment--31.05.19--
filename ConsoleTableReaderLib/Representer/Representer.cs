@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MyConsoleAppAsignment
 {
 	/// <summary>
-	/// Inherited "plug" class
+	/// Inherited wrapped class for any custom <see cref="IRepresenter"/>
 	/// </summary>
 	internal class Representer: IRepresenter
 	{
