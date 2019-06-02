@@ -82,17 +82,48 @@ Output:
 --------------------------------------------------------------------------------------------------------------------------------------
          
     File readilng:
-         As long, as the application should support adding problem solution implementing with additional libraries, 
-         file reading is represented by IReader interface. Each IReader implementation contains State and Set properies 
-         and Read() method.
+         As long, as the application should support adding problem solution implementing with additional libraries, it was decided
+         to split searching process in reading and searching. Different libraries can read xml/xmlsx in different custom data types,
+         but also it's natural that most of them should support reading into System data type, so it was decided, that on redaing 
+         step any Reader implementation sholud return System.Data.DataSet. Thus, common reader interface, IReader, was created.
+         Also, it was decided to create custom wrapper around System.Data.DataSet -- LocalDataSet -- to bring some control to DataSet 
+         creation. Each Reader should implement IReader interface.  Each IReader implementation contains State and Set properies and
+         Read() method.
          
          State: ReaderState struct, that defines the way file will be read. At the moment only contains ReaderOptions
-         enum value, which tells weather to read or not file, that doesn't have supported extension 
-         (responds to -u flag). 
+         enum value, which tells weather to read or not file, that doesn't have supported extension (corresponds to -u flag). 
          
+         Set: LocalDataSet, where file will be read to.
          
+         Read(): Tries to read path at the passed filepath. Returns true, if succeded, otherwise false.
          
-         EDRReader: Should be used carefully, because in case the reader won't be able to read file as xls/xlsx, it would
-         read it as an CSV file (which is basically formatted .txt, so it can cause unpredictible results).
+         Currently there's only one Reader implementation, EDRReader, based on free opensource library ExcelDataReader, which has 
+         an extension to read xml/xnls/CSV directly into System.Data.DataSet.
+         
+         EDRReader: Reads xls/slxd/csv. In safe context tries to read only supported file formats. In unsafe context first tries to
+         read file as xls/xlsx, and then, if fails, tries to read as a csv file (which is basically formatted .txt, so it can cause
+         unpredictible results). Unsafe flag should be used carefully.
+         
+--------------------------------------------------------------------------------------------------------------------------------------
+    
+    Searching:
+        Searching is performed by static Seacher class. It has one single method Search, that takes in an array of string keys and               LocalDataSet and returns SearchResult.
+        
+        SearchResult: struct containing search result. It has 2 fields: array of keys and array of sub structs Result. Result (struct)
+        contains an array of sheet names, sheet counts (match count for single sheet) and queues of cellnames. Each Result corresponds 
+        to a certain key in SearchResult.
+    
+--------------------------------------------------------------------------------------------------------------------------------------
+    
+    Result representation:
+        Representation process is basically a process of building output string using IRepresenter object.
+        
+        Because flags can vary in pretty wide range the only way of getting IRepresenter object is trough RepresentorFactory.
+        RepresentFactory decorates in correct order base Representer class in wrappers corresponding to passed to GetRepresenter()
+        method ActionFlags enum value.
+        
+        Then Represent() method is called. It takes in SerchResult structure and returns StringBuilder, containing ouput string
+        
+   
          
      
