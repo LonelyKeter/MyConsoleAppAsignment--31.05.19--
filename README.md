@@ -81,9 +81,13 @@ Output:
 --------------------------------------------------------------------------------------------------------------------------------------
          
     File readilng:
-         As long, as the application should support adding problem solution implementing with additional libraries, file reading is represented by IReader interface. Each IReader implementation contains State and Set properies and Read() method.
+         As long, as the application should support adding problem solution implementing with additional libraries, 
+         file reading is represented by IReader interface. Each IReader implementation contains State and Set properies 
+         and Read() method.
          
-         State: ReaderState struct, that defines the way file will be read. At the moment only contains ReaderOptions enum value, which tells weather to read or not file, that doesn't have supported extension (responds to -u flag). 
+         State: ReaderState struct, that defines the way file will be read. At the moment only contains ReaderOptions
+         enum value, which tells weather to read or not file, that doesn't have supported extension 
+         (responds to -u flag). 
          
          
          
