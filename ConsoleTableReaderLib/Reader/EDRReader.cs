@@ -38,37 +38,46 @@ namespace MyConsoleAppAsignment
 			string ext = filepath.Substring(filepath.LastIndexOf('.'));
 
 			if (ext == ".xls" || ext == ".xlsx")
-			{
+			{				
 				using (var stream = File.Open(filepath, FileMode.Open, FileAccess.Read))
-				{					
-					using (var reader = ExcelReaderFactory.CreateReader(stream))
+				{
+					try
 					{
-						do
+						using (var reader = ExcelReaderFactory.CreateReader(stream))
 						{
-							while (reader.Read()) { }
+							do
+							{
+								while (reader.Read()) { }
+							}
+							while (reader.NextResult());
+
+							this.Set.Set = reader.AsDataSet(Config);
 						}
-						while (reader.NextResult());
-						
-						this.Set.Set = reader.AsDataSet(Config);
 					}
+					catch { return false; }
+					return true;
 				}
-				return true;
+				
 			}
 
 			if (ext == ".csv" || ext == ".txt")
 			{
 				using (var stream = File.Open(filepath, FileMode.Open, FileAccess.Read))
 				{
-					using (var reader = ExcelReaderFactory.CreateCsvReader(stream))
+					try
 					{
-						do
+						using (var reader = ExcelReaderFactory.CreateCsvReader(stream))
 						{
-							while (reader.Read()) { }
-						}
-						while (reader.NextResult());
+							do
+							{
+								while (reader.Read()) { }
+							}
+							while (reader.NextResult());
 
-						this.Set.Set = reader.AsDataSet();
+							this.Set.Set = reader.AsDataSet();
+						}
 					}
+					catch { return false; }
 				}
 				return true;
 			}
